@@ -1,13 +1,12 @@
 // components/ProtectedRoute.tsx
 import { Navigate, Outlet } from "react-router-dom";
 import { CircularProgress } from "@mui/material";
+import { useAuth } from "./hooks/useAuth";
 
 const ProtectedRoute = () => {
-  // const { user, isLoading } =()
-  const user = false;
-  const isLoading = false;
+  const { user, isUserLoading } = useAuth();
 
-  if (isLoading) return <CircularProgress />;
+  if (isUserLoading) return <CircularProgress />;
 
   return user ? <Outlet /> : <Navigate to="/login" replace />;
 };

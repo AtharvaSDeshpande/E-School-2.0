@@ -1,0 +1,183 @@
+/* Auth.module.css (updated — no `--` in classnames) */
+
+/* Shared container */
+.authContainer {
+  background: var(--color-bg-base);
+  display: grid;
+  place-items: center;
+}
+
+.authForm {
+  display: flex;
+  flex-direction: column;
+  background: var(--color-surface-1);
+  height: 100%;
+  text-align: center;
+  padding: 1.25rem;
+  margin: 1.25rem;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-1);
+}
+
+.auth_img {
+  object-fit: contain;
+  height: 55px;
+}
+
+.authHeader {
+  color: var(--color-text-secondary);
+}
+
+.authHeader > h1 {
+  color: var(--color-text-primary);
+}
+
+/* unified link classname */
+.authLink {
+  text-decoration: none;
+  color: var(--color-accent-secondary);
+  cursor: pointer;
+}
+
+.authLink:hover {
+  color: var(--color-accent-primary);
+}
+
+/* Inputs */
+.inputBlock {
+  width: 398px;
+  margin: 10px;
+}
+
+.inputBlock__label {
+  text-align: left;
+  font: normal normal bold 18px/36px "Proxima Nova", sans-serif;
+  color: var(--color-text-primary);
+}
+
+.inputBlock__input {
+  background: var(--input-bg);
+  color: var(--color-text-primary);
+  width: 398px;
+  height: 34px;
+  border: none;
+  border-bottom: 1px solid var(--input-border);
+  padding: 0 6px;
+  transition: border-color 0.2s ease;
+}
+
+.inputBlock__input:focus {
+  outline: none;
+  border-color: var(--color-accent-primary);
+}
+
+.passwordInputBox {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid var(--input-border);
+}
+
+.inputBlock__password {
+  width: 384px;
+}
+
+.inputBlock__input__button {
+  height: 34px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.inputBlock__input__button .icon {
+  width: 18px;
+  height: 18px;
+  color: var(--color-accent-primary);
+}
+
+/* Buttons */
+.authButton {
+  cursor: pointer;
+  border-radius: 4px;
+  border: none;
+  height: 44px;
+  color: var(--color-white);
+  text-align: center;
+  letter-spacing: 1.6px;
+  font-size: 16px;
+  text-transform: uppercase;
+  margin-top: 10px;
+  transition: background 0.2s ease-in-out;
+  background: var(--color-accent-primary);
+}
+
+.authButton:hover {
+  background: var(--color-accent-primary-hover);
+}
+
+/* renamed, JS-friendly */
+.authButtonLogin {
+  width: 200px;
+}
+
+.authButtonCreate {
+  width: 248px;
+}
+
+.buttons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.buttonsColumn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* extras */
+.extraLabel {
+  text-align: right;
+  font: normal normal medium 13px/36px "Proxima Nova", sans-serif;
+  color: var(--color-feedback-error);
+  margin-right: 10px;
+}
+
+.alert {
+  background: var(--color-feedback-error);
+  color: var(--color-white);
+  font-size: 14px;
+  padding: 10px 14px;
+  border-radius: 6px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  box-shadow: var(--shadow-1);
+}
+
+.hidden {
+  display: none;
+}
+
+/* unique to CreateAccount */
+.orglink {
+  white-space: nowrap;
+  overflow: hidden;
+  text-decoration: none;
+  color: var(--color-accent-secondary);
+  font-style: italic;
+  margin-top: 10px;
+  display: inline-block;
+  animation: marquee 15s linear infinite;
+}
+
+/* responsive */
+@media (max-width: 500px) {
+  .inputBlock {
+    width: 280px;
+  }
+
+  .inputBlock__input {
+    width: 280px;
+  }
+}

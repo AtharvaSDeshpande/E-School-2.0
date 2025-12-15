@@ -1,13 +1,17 @@
 import { ChecklistOutlined, Create, Home, Person } from "@mui/icons-material";
-import { Tooltip } from "@mui/material";
+import { Avatar, Tooltip } from "@mui/material";
 import ToggleTheme from "../../components/ToggleTheme/ToggleTheme";
 import styles from "./Header.module.css";
 import logo from "../../assets/images/eschoolLogo.png";
 import { NavLink } from "react-router-dom";
+import { useAuth } from "../../hooks/useAuth";
+import { useEffect } from "react";
+import { getAvatarColor, getAvatarLetter } from "../../data/utils";
 
 const Header = () => {
-  const isLoading = false;
-  const user = true;
+  const { user, isUserLoading, logout } = useAuth();
+  const avatarLetter = getAvatarLetter(user);
+  const avatarColor = getAvatarColor(user);
 
   return (
     <div className={styles.header}>
@@ -16,7 +20,7 @@ const Header = () => {
       </div>
 
       <div className={styles.headerRight}>
-        {!isLoading && user ? (
+        {!isUserLoading && user ? (
           <>
             <Tooltip title="Home" className={styles.headerRightIcon}>
               <NavLink to="/">
@@ -43,16 +47,19 @@ const Header = () => {
 
         <ToggleTheme />
 
-        {/* {user ? (
-          <IconButton onClick={logout}>
-            <Avatar
-              src={user.picture}
-              slotProps={{
-                img: { referrerPolicy: "no-referrer" },
-              }}
-            />
-          </IconButton>
-        ) : null} */}
+        {user ? (
+          <Avatar
+            className={styles.headerRightAvatar}
+            slotProps={{
+              img: { referrerPolicy: "no-referrer" },
+            }}
+            src={user.photoURL ? user.photoURL : undefined}
+            sx={{ bgcolor: !user?.photoURL ? avatarColor : "transparent" }}
+            onClick={() => logout()}
+          >
+            {!user?.photoURL && avatarLetter}
+          </Avatar>
+        ) : null}
       </div>
     </div>
   );
